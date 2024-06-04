@@ -1,0 +1,9 @@
+[package]
+name = "karrier_one"
+# published-at = "0x41265560d740676aa47e6c44ae237678f48e2ada02c8da9ed65190a2d96b4369"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
+
+[addresses]
+karrier_one = "0x0"
