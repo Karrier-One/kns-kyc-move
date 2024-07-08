@@ -11,7 +11,7 @@ dotenv.config(); // This loads the environment variables from .env file
 export const raw = fromB64(process.env.SUI_PRIVATE_KEY!); 
 export const keypair = Ed25519Keypair.fromSecretKey(raw.slice(1));
 
-const packageId = "0xfe235f5c25a65c019c008a2e6516788759fcd2790de5b9e0fe4b4e4f582911ae";
+const packageId = "0x695fa0bd4395696074c4b9e8d2122e40664c0a78842c356095ed28ccdc04a802";
 
 async function approve() {
     const client = new SuiClient({url: getFullnodeUrl("testnet")});

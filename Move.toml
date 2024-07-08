@@ -1,7 +1,7 @@
 [package]
 name = "karrier_one"
 edition = "2024.beta"
-# published-at = "0x41265560d740676aa47e6c44ae237678f48e2ada02c8da9ed65190a2d96b4369"
+# published-at = "0x695fa0bd4395696074c4b9e8d2122e40664c0a78842c356095ed28ccdc04a802"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }

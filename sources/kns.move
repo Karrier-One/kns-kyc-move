@@ -30,10 +30,18 @@ module karrier_one::kns {
         object_id: ID
     }
 
+    public struct SetupDisplayEvent has copy, drop {
+        display_type: std::ascii::String
+    }
+
     public fun setup_display<T: key>(pub: &package::Publisher, fields: vector<string::String>, values: vector<string::String>, ctx: &mut TxContext): display::Display<T> {
+        assert!(package::from_package<T>(pub), 0);
         let mut display = display::new_with_fields<T>(pub, fields, values, ctx);
         display.update_version();
-
+        let display_type = std::type_name::get<T>();
+        event::emit(SetupDisplayEvent {
+            display_type: display_type.into_string()
+        });        
         display
     }
 

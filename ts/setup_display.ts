@@ -11,7 +11,7 @@ dotenv.config(); // This loads the environment variables from .env file
 export const raw = fromB64(process.env.SUI_PRIVATE_KEY!); 
 export const keypair = Ed25519Keypair.fromSecretKey(raw.slice(1));
 
-const packageId = "0xfea85302b13013d6015482e4ab998a01ff61684fb112b323cc9b3c2642365ac5";
+const packageId = "0x695fa0bd4395696074c4b9e8d2122e40664c0a78842c356095ed28ccdc04a802";
 
 async function setup_display_kyc() {
     const client = new SuiClient({url: getFullnodeUrl("testnet")});
@@ -19,11 +19,11 @@ async function setup_display_kyc() {
         let display = txb.moveCall({
           target: `${packageId}::kns::setup_display`,
           arguments: [
-            txb.pure('0xb08ca03b41aa2b13cac630043283095882a9e11bca375ab4035dafc399857d3f'),
+            txb.pure('0x52e1db881bdc1acd8df4711775c6752454e9d9560137383b0074556244055289'),
             txb.pure(["name","image_url","description","project_url","creator"]),
             txb.pure(["KYC Verification Certificate","https://kns-api.karrier.one/kyc/{id}.svg","The owner of this wallet has been verified by Karrier One.","https://karrier.one","Karrier One Team"]),
           ],
-          typeArguments: [ '0xfea85302b13013d6015482e4ab998a01ff61684fb112b323cc9b3c2642365ac5::kyc::Kyc' ]
+          typeArguments: [ '0x695fa0bd4395696074c4b9e8d2122e40664c0a78842c356095ed28ccdc04a802::kyc::Kyc' ]
         });
         txb.transferObjects([display], keypair.toSuiAddress());
         const tx = await client.signAndExecuteTransactionBlock({
@@ -46,11 +46,11 @@ async function setup_display_kns() {
         let display = txb.moveCall({
           target: `${packageId}::kns::setup_display`,
           arguments: [
-            txb.pure('0xb08ca03b41aa2b13cac630043283095882a9e11bca375ab4035dafc399857d3f'),
+            txb.pure('0x52e1db881bdc1acd8df4711775c6752454e9d9560137383b0074556244055289'),
             txb.pure(["name","image_url","description","project_url","creator"]),
             txb.pure(["Karrier Number System","https://kns-api.karrier.one/profile/{id}.svg","Cellular phone number verified by Karrier One.","https://karrier.one","Karrier One Team"]),
           ],
-          typeArguments: [ '0xfea85302b13013d6015482e4ab998a01ff61684fb112b323cc9b3c2642365ac5::kns::Kns' ]
+          typeArguments: [ '0x695fa0bd4395696074c4b9e8d2122e40664c0a78842c356095ed28ccdc04a802::kns::Kns' ]
         });
         txb.transferObjects([display], keypair.toSuiAddress());
         const tx = await client.signAndExecuteTransactionBlock({
